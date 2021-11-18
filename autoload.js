@@ -25,17 +25,17 @@ function loadExternalResource(url, type) {
 }
 
 // 加载 waifu.css live2d.min.js waifu-tips.js
-if (screen.width >= 768) {
+if (screen.width >=1024) {
 	Promise.all([
-		loadExternalResource(live2d_path + "waifu.css", "css"),
+		loadExternalResource(live2d_path + "waifu.min.css", "css"),
 		loadExternalResource(live2d_path + "live2d.min.js", "js"),
-		loadExternalResource(live2d_path + "waifu-tips.js", "js")
+		loadExternalResource(live2d_path + "waifu-tips.min.js", "js")
 	]).then(() => {
 		initWidget({
 			waifuPath: live2d_path + "waifu-tips.json",
-			//apiPath: "https://live2d.fghrsh.net/api/",
+			// apiPath: "https://live2d.fghrsh.net/api/"
+			// cdnPath: "https://cdn.jsdelivr.net/gh/Akilarlxh/live2d_api@master/"
 			cdnPath: "https://kamito-live2d-api.vercel.app/"
-			
 		});
 	});
 }
