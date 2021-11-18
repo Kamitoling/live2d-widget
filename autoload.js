@@ -1,5 +1,5 @@
 // 注意：live2d_path 参数应使用绝对路径
-const live2d_path = "https://live2d-widget-38uwgwn8j-kamitoling.vercel.app/";
+const live2d_path = "https://live2d-widget.vercel.app/";
 //const live2d_path = "/live2d-widget/";
 
 // 封装异步加载资源的方法
@@ -35,9 +35,7 @@ function loadExternalResource(url, type) {
   		initWidget({
   			waifuPath: live2d_path + "waifu-tips.json",
   			//apiPath: "https://live2d.fghrsh.net/api/",
-                          cdnPath: "https://kamito-live2d-api.vercel.app/"
-//因为jsdelivr不支持50MB以上的包的加速，可能报403错误，所以用的vercel的CDN服务。
-//可以考虑clone我配置好的live2d_api仓库自己部署到其他更快的cdn服务上。
+                        cdnPath: "https://kamito-live2d-api.vercel.app/"
   		});
   	});
   }
