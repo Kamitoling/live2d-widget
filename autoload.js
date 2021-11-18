@@ -25,20 +25,22 @@ function loadExternalResource(url, type) {
 }
 
 // 加载 waifu.css live2d.min.js waifu-tips.js
-if (screen.width >=1024) {
-	Promise.all([
-		loadExternalResource(live2d_path + "waifu.min.css", "css"),
-		loadExternalResource(live2d_path + "live2d.min.js", "js"),
-		loadExternalResource(live2d_path + "waifu-tips.min.js", "js")
-	]).then(() => {
-		initWidget({
-			waifuPath: live2d_path + "waifu-tips.json",
-			// apiPath: "https://live2d.fghrsh.net/api/"
-			// cdnPath: "https://cdn.jsdelivr.net/gh/Akilarlxh/live2d_api@master/"
-			cdnPath: "https://kamito-live2d-api.vercel.app/"
-		});
-	});
-}
+  // 加载 waifu.css live2d.min.js waifu-tips.js
+  if (screen.width >= 768) {
+  	Promise.all([
+  		loadExternalResource(live2d_path + "waifu.css", "css"),
+  		loadExternalResource(live2d_path + "live2d.min.js", "js"),
+  		loadExternalResource(live2d_path + "waifu-tips.js", "js")
+  	]).then(() => {
+  		initWidget({
+  			waifuPath: live2d_path + "waifu-tips.json",
+  			//apiPath: "https://live2d.fghrsh.net/api/",
+                          cdnPath: "https://kamito-live2d-api.vercel.app/"
+//因为jsdelivr不支持50MB以上的包的加速，可能报403错误，所以用的vercel的CDN服务。
+//可以考虑clone我配置好的live2d_api仓库自己部署到其他更快的cdn服务上。
+  		});
+  	});
+  }
 // initWidget 第一个参数为 waifu-tips.json 的路径，第二个参数为 API 地址
 // API 后端可自行搭建，参考 https://github.com/fghrsh/live2d_api
 // 初始化看板娘会自动加载指定目录下的 waifu-tips.json
